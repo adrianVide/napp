@@ -1,0 +1,13 @@
+.master {
+  justify-content: center;
+  display: flex;
+}
+
+.main {
+  width: 80vw;
+}
+
+.searchbar {
+    display: flex;
+    float: right;
+}

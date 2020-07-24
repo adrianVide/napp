@@ -11,7 +11,6 @@ export const Worker = (props) => {
       let response = await axios(
         `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas/${props.match.params.id}`
       );
-      console.log(response)
       setData(response.data);
     }
     fetchData();
@@ -23,6 +22,8 @@ export const Worker = (props) => {
     <div>
       <div>Testing Worker</div>
       <div>{data.first_name}</div>
+      <div>{data.last_name}</div>
+      <img src={data.image} alt=""/>
     </div>
   );
 };

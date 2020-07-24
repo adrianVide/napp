@@ -1,0 +1,17 @@
+.container {
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 80vw;
+}
+
+.logo {
+  padding: 0 15px 0 0;
+  width: 45px;
+}
