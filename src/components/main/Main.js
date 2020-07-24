@@ -16,10 +16,19 @@ export const Main = () => {
     fetchData();
   }, []);
 
-  const filteredData = data.filter((worker) =>
+  const filteredFirstName = data.filter((worker) =>
     worker.first_name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   )
+  const filteredLastName = data.filter((worker) =>
+    worker.last_name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+  )
+  const filteredProfession = data.filter((worker) =>
+    worker.profession.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+  )
 
+  const filteredData = [...new Set([...filteredFirstName, ...filteredProfession, ...filteredLastName])]
+  
+//   const currentData = Set.data
   console.log(filteredData)
 
   return (
@@ -35,7 +44,7 @@ export const Main = () => {
         />
       </form>
       <ul>
-        {data.map((worker) => (
+        {filteredData.map((worker) => (
           <li key={worker.id}>
             <a href={worker.id}>
               {worker.first_name}
