@@ -54,21 +54,18 @@ export const Main = () => {
         </div>
 
         <h1>Find your Oompa Loompa</h1>
-        <p className='subtitle'>There are more than 100k</p>
+        <p className="subtitle">There are more than 100k</p>
         <div className="cards">
           {filteredData.map((worker) => (
-            <Link to={`/${worker.id}`} className="card">
-              <div key={worker.id}>
-                <img src={worker.image} alt="worker" className='card-image'/>
-                <div>
-                  <h4>
-                    <b>
-                      {worker.first_name} {worker.last_name}
-                    </b>
-                  </h4>
-                  <p>{worker.profession}</p>
-                </div>
-              </div>
+            <Link to={`/${worker.id}`} key={worker.id} className="card">
+              <img src={worker.image} alt="worker" className="card-image" />
+                <h2>
+                  <b>
+                    {worker.first_name} {worker.last_name}
+                  </b>
+                </h2>
+                <p>{worker.gender === "F" ? "Female" : "Male"}</p>
+                <p>{worker.profession}</p>
             </Link>
           ))}
         </div>
