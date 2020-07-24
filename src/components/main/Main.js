@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -6,6 +7,8 @@ export const Main = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('')
 
+
+  //Fetch data on 1st load
   useEffect(() => {
     async function fetchData() {
       let response = await axios(
@@ -16,6 +19,7 @@ export const Main = () => {
     fetchData();
   }, []);
 
+  //Filtering
   const filteredFirstName = data.filter((worker) =>
     worker.first_name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   )
@@ -28,8 +32,6 @@ export const Main = () => {
 
   const filteredData = [...new Set([...filteredFirstName, ...filteredProfession, ...filteredLastName])]
   
-//   const currentData = Set.data
-  console.log(filteredData)
 
   return (
     <div>
@@ -46,6 +48,7 @@ export const Main = () => {
       <ul>
         {filteredData.map((worker) => (
           <li key={worker.id}>
+          <Link to={`/${worker.id}`}>{worker.id}</Link>
             <a href={worker.id}>
               {worker.first_name}
               {worker.last_name}
