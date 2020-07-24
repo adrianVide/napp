@@ -1,3 +1,11 @@
+h1 {
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+
 .master {
   justify-content: center;
   display: flex;
@@ -8,6 +16,31 @@
 }
 
 .searchbar {
-    display: flex;
-    float: right;
+  padding-top: 10px;
+  display: flex;
+  text-align: right;
+  /* float: right; */
+}
+
+.card {
+  text-decoration: none;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  /* position: relative; */
+  top: 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0% 2%;
+  grid-template-areas: ". . ." ". . ." ". . .";
+}
+
+.card-image {
+  object-fit: cover;
+  width: 100%;
+  height: 50%;
 }

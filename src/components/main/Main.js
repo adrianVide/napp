@@ -41,32 +41,37 @@ export const Main = () => {
   return (
     <div className="master">
       <div className="main">
-      <dir className='search-container'><form className='searchbar'>
-          <input
-            type="text"
-            placeholder="Search for..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            name="query"
-          />
-        </form></dir>
-        
-        <h1>Find your Oompa Loompa</h1>
-        <p>There are more than 100k</p>
+        <div className="search-container">
+          <form className="searchbar">
+            <input
+              type="text"
+              placeholder="Search for..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              name="query"
+            />
+          </form>
+        </div>
 
-        <ul>
+        <h1>Find your Oompa Loompa</h1>
+        <p className='subtitle'>There are more than 100k</p>
+        <div className="cards">
           {filteredData.map((worker) => (
-              
-            <li key={worker.id}>
-              <Link to={`/${worker.id}`}>{worker.id}</Link>
-              <a href={worker.id}>
-                {worker.first_name}
-                {worker.last_name}
-              </a>
-              <li>{worker.profession}</li>
-            </li>
+            <Link to={`/${worker.id}`} className="card">
+              <div key={worker.id}>
+                <img src={worker.image} alt="worker" className='card-image'/>
+                <div>
+                  <h4>
+                    <b>
+                      {worker.first_name} {worker.last_name}
+                    </b>
+                  </h4>
+                  <p>{worker.profession}</p>
+                </div>
+              </div>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
