@@ -10,9 +10,9 @@ export const Main = () => {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
 
-  //Fetch data on 1st load
+  //Set data on 1st load
   useEffect(() => {
-    checkCache(1)
+    checkCache(pageNumber)
   }, []);
 
   //Checks if in 24hr range and sets data to cache or calls fetchData if out of 24hr range
