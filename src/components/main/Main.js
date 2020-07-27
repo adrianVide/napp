@@ -4,16 +4,23 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./main.css";
 
+
 export const Main = () => {
-  const [pageData, setPageData] = useState();
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
+  const [fullData, setFullData] = useState([]);
+  let toAdd = []
 
-  //Set data on 1st load
+  //Set data on page change
   useEffect(() => {
     checkCache(pageNumber)
-  }, []);
+    
+    const toAdd = fullData.concat(data)
+    setFullData(toAdd)
+  }, [pageNumber]);
+
+
 
   //Checks if in 24hr range and sets data to cache or calls fetchData if out of 24hr range
   function checkCache(pageNumber) {
@@ -23,6 +30,8 @@ export const Main = () => {
     if (window.localStorage.getItem(`timeCache${pageNumber}`) != null && (actualTime - pageCache) < (24*60*60*1000)) {
       console.log('in 24hr range')
       setData(JSON.parse(window.localStorage.getItem(`cacheData${pageNumber}`)));
+    
+  
     } else {
       fetchData(pageNumber)
     }
@@ -44,14 +53,15 @@ export const Main = () => {
 
   //Add non existing items to array
 
+
   //Filtering
-  const filteredFirstName = data.filter((worker) =>
+  const filteredFirstName = fullData.filter((worker) =>
     worker.first_name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
-  const filteredLastName = data.filter((worker) =>
+  const filteredLastName = fullData.filter((worker) =>
     worker.last_name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
-  const filteredProfession = data.filter((worker) =>
+  const filteredProfession = fullData.filter((worker) =>
     worker.profession.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
 
@@ -62,6 +72,16 @@ export const Main = () => {
       ...filteredLastName,
     ]),
   ];
+
+  function clickTest() {
+    setPageNumber(pageNumber => pageNumber +1)
+    // const toAdd = fullData.concat(data)
+    // setFullData(toAdd)
+    console.log(fullData)
+    console.log(data)
+    console.log(pageNumber)
+    console.log(filteredData)
+  }
 
   return (
     <div className="master">
@@ -92,6 +112,7 @@ export const Main = () => {
             </Link>
           ))}
         </div>
+        <button onClick={clickTest}>click</button>
       </div>
     </div>
   );
