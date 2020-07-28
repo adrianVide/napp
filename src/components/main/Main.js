@@ -68,15 +68,6 @@ export const Main = () => {
   return (
     <div className="master">
       <div className="main">
-      {/* <form className="searchbar">
-      <input className="input-control"
-            type="text"
-            placeholder="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            name="query">
-      </input><img className='btn-img' src="https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png" />
-    </form> */}
         <form className="searchbar">
           <input
             className="input-control"

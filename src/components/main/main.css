@@ -70,16 +70,3 @@ h3 {
 .profession {
   font-style: italic;
 }
-
-.searchbtn{
-
-  
-}
-
-.btn-img {  margin: 0px;
-  font-size: 15px;
-  padding: 0.3em;
-  border: 2px 0px solid lightgrey;
-  border-radius: 0px 10px 10px 0px;
-  /* width: 15px; */
-}
