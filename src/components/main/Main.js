@@ -18,11 +18,11 @@ export const Main = () => {
       const data = await APIcall(realPage)
       console.log(data.total)
       // const data = await resp.json();
+      // setHasMore(realPage * 25 <= 500);
       setHasMore(realPage * 25 <= 500);
-      // setHasMore(realPage * 10 <= data.total);
       setItems(prev => [...prev, ...data.results]);
       console.log(page)
-      console.log(items)
+      console.log(hasMore)
     })();
   }, [page]);
 
