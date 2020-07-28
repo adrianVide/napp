@@ -19,8 +19,6 @@ export const Main = () => {
       const data = await APIcall(realPage);
       setHasMore(realPage * 25 <= 500);
       setItems((prev) => [...prev, ...data]);
-      // console.log(page);
-      // console.log(hasMore);
     })();
   }, [page]);
 
@@ -30,25 +28,20 @@ export const Main = () => {
     let pageCache = Date.parse(
       window.localStorage.getItem(`timeCache${realPage}`)
     );
-    if (
-      window.localStorage.getItem(`timeCache${realPage}`) != null &&
-      actualTime - pageCache < 24 * 60 * 60 * 1000
-    ) {
-      console.log("in 24hr range");
-      let cached = JSON.parse(window.localStorage.getItem(`cacheData${realPage}`));
-      console.log(cached)
-      return cached
+    if (pageCache != null && actualTime - pageCache < 24 * 60 * 60 * 1000) {
+      let cached = JSON.parse(
+        window.localStorage.getItem(`cacheData${realPage}`)
+      );
+      return cached;
     } else {
       let response = await axios(
         `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas?page=${realPage}`
       );
-      console.log("New fetched data");
       window.localStorage.setItem(
         `cacheData${realPage}`,
         JSON.stringify(response.data.results)
       );
       window.localStorage.setItem(`timeCache${realPage}`, new Date());
-      console.log(response.data.results)
       return response.data.results;
     }
   }

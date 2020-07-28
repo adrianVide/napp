@@ -4,14 +4,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { Main } from "./components/main/Main";
-import Example from "./components/example/Example";
 import { Nav } from "./components/nav/Nav";
 import { Worker } from "./components/worker/Worker";
 
 ReactDOM.render(
   <React.StrictMode>
   <Nav />
-  {/* <Example /> */}
     <Router>
       <Route exact path='/' component={Main} />
       <Route exact path='/:id' component={Worker} />
