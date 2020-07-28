@@ -12,6 +12,7 @@ export const Main = () => {
   const [page, loaderRef, scrollerRef] = useInfiniteScroll({ hasMore });
   const [query, setQuery] = useState("");
 
+  //Rerender when scrolling
   useEffect(() => {
     (async () => {
       const realPage = page + 1;
@@ -25,11 +26,30 @@ export const Main = () => {
     })();
   }, [page]);
 
+  //Grab from cache or call API
   async function APIcall(realPage) {
-    let response = await axios(
-      `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas?page=${realPage}`
+    let actualTime = Date.parse(new Date());
+    let pageCache = Date.parse(
+      window.localStorage.getItem(`timeCache${realPage}`)
     );
-    return response.data;
+    if (
+      window.localStorage.getItem(`timeCache${realPage}`) != null &&
+      actualTime - pageCache < 24 * 60 * 60 * 1000
+    ) {
+      console.log("in 24hr range");
+      return JSON.parse(window.localStorage.getItem(`cacheData${realPage}`));
+    } else {
+      let response = await axios(
+        `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas?page=${realPage}`
+      );
+      console.log("New fetched data");
+      window.localStorage.setItem(
+        `cacheData${realPage}`,
+        JSON.stringify(response.data.results)
+      );
+      window.localStorage.setItem(`timeCache${realPage}`, new Date());
+      return response.data;
+    }
   }
 
   //Filtering
@@ -43,6 +63,7 @@ export const Main = () => {
     worker.profession.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
 
+  //Filtered data to render
   const filteredData = [
     ...new Set([
       ...filteredFirstName,
