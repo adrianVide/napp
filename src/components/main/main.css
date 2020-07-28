@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  margin: 5% 0% 0% 0%;
+  margin: 2% 0% 0% 0%;
 }
 
 h2 {
@@ -15,7 +15,7 @@ h3 {
   font-size: 22px;
   text-align: center;
   color: grey;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .master {
@@ -39,7 +39,12 @@ h3 {
   border: 2px solid lightgrey;
   border-radius: 10px;
   margin: 0px;
+}
 
+::placeholder { 
+  padding-left: 2.5%;
+  color: grey;
+  opacity: .8; 
 }
 
 .card {
@@ -50,10 +55,10 @@ h3 {
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0% 2%;
+  gap: 1% 2%;
+  /* grid-template-areas: "a a a" "b b b" "c c c"; */
   grid-template-areas: ". . ." ". . ." ". . .";
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
 }
 
