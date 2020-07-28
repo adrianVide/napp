@@ -41,10 +41,10 @@ export const Worker = (props) => {
    
           <img className='half worker-image' src={data.image} alt="" />
           <div className='half description'>
-            <p>{data.first_name} {data.last_name}</p>
-            <p>{data.gender === "F" ? "Female" : "Male"}</p>
-            <p>{data.profession}</p>
-            <p>{data.description}</p>
+            <h2>{data.first_name} {data.last_name}</h2>
+            <p className='main-info'>{data.gender === "F" ? "Female" : "Male"}</p>
+            <p className='main-info profession'>{data.profession}</p>
+            <p className='worker-description'>{data.description}</p>
           </div>
       </div>
     </div>

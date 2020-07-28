@@ -2,6 +2,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  margin: 0px;
+}
+
 h3 {
   margin: 15px 0px 5px 0px;
 }
@@ -11,7 +15,7 @@ p {
 }
 
 .master-worker {
-  padding-top: 5% ;
+  padding-top: 5%;
   justify-content: center;
   display: flex;
 }
@@ -21,15 +25,28 @@ p {
 }
 
 .half {
-    float:left;
-    width:50%;
+  float: left;
+  width: 50%;
 }
 
 .description {
-    padding-left: 20px 
+  padding-left: 20px;
 }
 
 .worker-image {
-    object-fit: cover;
-    height: 80%;
-  }
+  object-fit: cover;
+  height: 80%;
+}
+
+.worker-description {
+  margin-top: 3%;
+  line-height: 1.5em;
+}
+
+.main-info {
+  color: grey;
+}
+
+.profession {
+  font-style: italic;
+}

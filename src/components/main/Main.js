@@ -86,9 +86,9 @@ export const Main = () => {
             <Link to={`/${worker.id}`} key={worker.id} className="card">
               <img src={worker.image} alt="worker" className="card-image" />
               <h2>
-                <b>
+                
                   {worker.first_name} {worker.last_name}
-                </b>
+                
               </h2>
               <p className='main-info'>{worker.gender === "F" ? "Female" : "Male"}</p>
               <p className='main-info profession'>{worker.profession}</p>
