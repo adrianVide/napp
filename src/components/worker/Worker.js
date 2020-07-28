@@ -35,23 +35,11 @@ export const Worker = (props) => {
     fetchData();
   }, []);
 
-  // if (data.description) {
-  //   data.description.replace(/<[^>]+>/g, "");
-  // }
-
-  //Setting if includes HTML or not to parse
+  //If includes HTML interpret it
   if (/<\/?[a-z][\s\S]*>/.test(data.description)) {
     document.getElementById("test").innerHTML = data.description;
     data.description = "";
   }
-  //   var div = document.createElement("div");
-  //   div.innerHTML = html;
-  //   data.description = div.textContent || div.innerText || "";
-  // }
-
-  // document.getElementById('test').innerHTML = data.description
-
-  // /<\/?[a-z][\s\S]*>/.test(data.description) ? document.getElementById("test").innerHTML = data.description : data.description = data.description;
 
   return (
     <div className="master-worker">
@@ -63,15 +51,7 @@ export const Worker = (props) => {
           </h2>
           <p className="main-info">{data.gender === "F" ? "Female" : "Male"}</p>
           <p className="main-info profession">{data.profession}</p>
-          {/* <p className='main-info profession'>{data.description.includes("<", 0)}</p> */}
-          {/* {data.description ? data.description.replace(/<[^>]+>/g, '') : null} */}
-          {/* {/<\/?[a-z][\s\S]*>/.test(data.description) ? document.createElement("div").innerHTML = data.description : data.description = data.description} */}
-          {/* <p className='worker-description'>{data.description}</p> */}
-          {/* {data.description
-            ? (document.getElementById("test").innerHTML = data.description)
-            : data.description} */}
           <div id="test"></div>
-          
           <p className="worker-description">{data.description}</p>
         </div>
       </div>

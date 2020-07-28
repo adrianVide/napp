@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./main.css";
-
 import useInfiniteScroll from "@closeio/use-infinite-scroll";
 
 export const Main = () => {
@@ -22,7 +21,7 @@ export const Main = () => {
     })();
   }, [page]);
 
-  //Grab from cache or call API
+  //Grab from cache or call API and set cache for next load
   async function APIcall(realPage) {
     let actualTime = Date.parse(new Date());
     let pageCache = Date.parse(
@@ -69,14 +68,25 @@ export const Main = () => {
   return (
     <div className="master">
       <div className="main">
+      {/* <form className="searchbar">
+      <input className="input-control"
+            type="text"
+            placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            name="query">
+      </input><img className='btn-img' src="https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png" />
+    </form> */}
         <form className="searchbar">
           <input
+            className="input-control"
             type="text"
-            placeholder="Search for..."
+            placeholder="Search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             name="query"
-          />
+          ></input>
+        
         </form>
 
         <h1>Find your Oompa Loompa</h1>
@@ -86,15 +96,15 @@ export const Main = () => {
             <Link to={`/${worker.id}`} key={worker.id} className="card">
               <img src={worker.image} alt="worker" className="card-image" />
               <h2>
-                
-                  {worker.first_name} {worker.last_name}
-                
+                {worker.first_name} {worker.last_name}
               </h2>
-              <p className='main-info'>{worker.gender === "F" ? "Female" : "Male"}</p>
-              <p className='main-info profession'>{worker.profession}</p>
+              <p className="main-info">
+                {worker.gender === "F" ? "Female" : "Male"}
+              </p>
+              <p className="main-info profession">{worker.profession}</p>
             </Link>
           ))}
-          {hasMore && <div ref={loaderRef}>Loading…</div>}
+          {hasMore && <div ref={loaderRef}></div>}
         </div>
       </div>
     </div>
