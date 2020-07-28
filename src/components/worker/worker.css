@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+}
+
+h3 {
+  margin: 15px 0px 5px 0px;
+}
+
+p {
+  margin: 5px 0px;
+}
+
+.master {
+    padding-top: 5% ;
+  justify-content: center;
+  display: flex;
+}
+
+.main {
+  width: 75vw;
+}
+
+.half {
+    float:left;
+    width:50%;
+}
+
+.description {
+    padding-left: 20px 
+}
+
+.worker-image {
+    object-fit: cover;
+    height: 80%;
+  }

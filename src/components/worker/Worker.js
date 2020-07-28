@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./worker.css";
 
 export const Worker = (props) => {
   const [data, setData] = useState({});
@@ -15,7 +16,6 @@ export const Worker = (props) => {
         let cached = JSON.parse(
           window.localStorage.getItem(`cacheDataId${props.match.params.id}`)
         );
-        console.log('using CACHED data', cached)
         setData(cached);
       } else {
         let response = await axios(
@@ -29,20 +29,24 @@ export const Worker = (props) => {
           `timeCacheId${props.match.params.id}`,
           new Date()
         );
-        console.log('using NEW data', response.data)
         setData(response.data);
       }
     }
     fetchData();
   }, []);
 
-
   return (
-    <div>
-      <div>Testing Worker</div>
-      <div>{data.first_name}</div>
-      <div>{data.last_name}</div>
-      <img src={data.image} alt="" />
+    <div className="master">
+      <div className="main">
+   
+          <img className='half worker-image' src={data.image} alt="" />
+          <div className='half description'>
+            <p>{data.first_name} {data.last_name}</p>
+            <p>{data.gender === "F" ? "Female" : "Male"}</p>
+            <p>{data.profession}</p>
+            <p>{data.description}</p>
+          </div>
+      </div>
     </div>
   );
 };
