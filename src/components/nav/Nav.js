@@ -12,9 +12,7 @@ export const Nav = () => {
             alt="logo"
           />
         </a>
-        
-      Oompa Loompa's Crew
-        
+        Oompa Loompa's Crew
       </div>
     </div>
   );

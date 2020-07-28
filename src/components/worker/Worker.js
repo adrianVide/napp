@@ -36,7 +36,7 @@ export const Worker = (props) => {
   }, []);
 
   return (
-    <div className="master">
+    <div className="master-worker">
       <div className="main">
    
           <img className='half worker-image' src={data.image} alt="" />

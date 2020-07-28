@@ -10,8 +10,8 @@ p {
   margin: 5px 0px;
 }
 
-.master {
-    padding-top: 5% ;
+.master-worker {
+  padding-top: 5% ;
   justify-content: center;
   display: flex;
 }

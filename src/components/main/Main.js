@@ -90,8 +90,8 @@ export const Main = () => {
                   {worker.first_name} {worker.last_name}
                 </b>
               </h2>
-              <p>{worker.gender === "F" ? "Female" : "Male"}</p>
-              <p>{worker.profession}</p>
+              <p className='main-info'>{worker.gender === "F" ? "Female" : "Male"}</p>
+              <p className='main-info profession'>{worker.profession}</p>
             </Link>
           ))}
           {hasMore && <div ref={loaderRef}>Loading…</div>}

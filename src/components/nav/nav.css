@@ -9,9 +9,12 @@
   display: flex;
   align-items: center;
   width: 75vw;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .logo {
   padding: 0 15px 0 0;
-  width: 45px;
+  width: 50px;
 }
+
