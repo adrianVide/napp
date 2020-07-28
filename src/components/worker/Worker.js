@@ -34,18 +34,33 @@ export const Worker = (props) => {
     }
     fetchData();
   }, []);
+  //Setting if includes HTML or not to parse
+
+  if (/<\/?[a-z][\s\S]*>/.test(data.description)) {
+    var html = data.description;
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    data.description = div.textContent || div.innerText || "";
+  }
+
+  // /<\/?[a-z][\s\S]*>/.test(data.description) ? document.createElement("div").innerHTML = data.description : data.description = data.description;
 
   return (
     <div className="master-worker">
       <div className="main">
-   
-          <img className='half worker-image' src={data.image} alt="" />
-          <div className='half description'>
-            <h2>{data.first_name} {data.last_name}</h2>
-            <p className='main-info'>{data.gender === "F" ? "Female" : "Male"}</p>
-            <p className='main-info profession'>{data.profession}</p>
-            <p className='worker-description'>{data.description}</p>
-          </div>
+        <img className="half worker-image" src={data.image} alt="" />
+        <div className="half description">
+          <h2>
+            {data.first_name} {data.last_name}
+          </h2>
+          <p className="main-info">{data.gender === "F" ? "Female" : "Male"}</p>
+          <p className="main-info profession">{data.profession}</p>
+          {/* <p className='main-info profession'>{data.description.includes("<", 0)}</p> */}
+
+          {/* {/<\/?[a-z][\s\S]*>/.test(data.description) ? document.createElement("div").innerHTML = data.description : data.description = data.description} */}
+          <p className='worker-description'>{data.description}</p>
+          {/* <p className="worker-description">{text}</p> */}
+        </div>
       </div>
     </div>
   );
