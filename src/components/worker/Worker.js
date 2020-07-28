@@ -71,8 +71,8 @@ export const Worker = (props) => {
             ? (document.getElementById("test").innerHTML = data.description)
             : data.description} */}
           <div id="test"></div>
-          {data.description}
-          {/* <p className="worker-description">{text}</p> */}
+          
+          <p className="worker-description">{data.description}</p>
         </div>
       </div>
     </div>
