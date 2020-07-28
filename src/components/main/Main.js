@@ -16,13 +16,11 @@ export const Main = () => {
   useEffect(() => {
     (async () => {
       const realPage = page + 1;
-      console.log(realPage);
       const data = await APIcall(realPage);
-      console.log(data.total);
       setHasMore(realPage * 25 <= 500);
-      setItems((prev) => [...prev, ...data.results]);
-      console.log(page);
-      console.log(hasMore);
+      setItems((prev) => [...prev, ...data]);
+      // console.log(page);
+      // console.log(hasMore);
     })();
   }, [page]);
 
@@ -37,7 +35,9 @@ export const Main = () => {
       actualTime - pageCache < 24 * 60 * 60 * 1000
     ) {
       console.log("in 24hr range");
-      return JSON.parse(window.localStorage.getItem(`cacheData${realPage}`));
+      let cached = JSON.parse(window.localStorage.getItem(`cacheData${realPage}`));
+      console.log(cached)
+      return cached
     } else {
       let response = await axios(
         `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas?page=${realPage}`
@@ -48,7 +48,8 @@ export const Main = () => {
         JSON.stringify(response.data.results)
       );
       window.localStorage.setItem(`timeCache${realPage}`, new Date());
-      return response.data;
+      console.log(response.data.results)
+      return response.data.results;
     }
   }
 
